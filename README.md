@@ -1,6 +1,4 @@
-Here is your enhanced `README.md` in proper Markdown format — ready to copy and paste into your GitHub project:
 
-```md
 # 🧠 Mind Mate – Mental Wellness Companion App
 
 Mind Mate is a **Flutter-based mental wellness mobile app** tailored for university students.  
