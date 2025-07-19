@@ -81,7 +81,7 @@ flutter run -d chrome  # For web testing (or use device/emulator)
 ```bash
 flutter build apk --debug  # Output: build/app/outputs/flutter-apk/app-debug.apk
 ```  
-🔗 **[Download APK](https://github.com/YourUsername/mind_mate/releases)**  
+🔗 **[Download APK](https://github.com/hugues6221394/Mental-Wellness-App/releases)**  
 
 ---
 
@@ -101,7 +101,7 @@ flutter build apk --debug  # Output: build/app/outputs/flutter-apk/app-debug.apk
 - **ID**: 26148  
 - **Institution**: Adventist University of Central Africa (AUCA)  
 - **Course**: Mobile Programming  
-- **Instructor**: [Instructor Name]  
+- **Instructor**: Regis Safi 
 - **Submission Date**: July 19, 2025  
 
 ---
