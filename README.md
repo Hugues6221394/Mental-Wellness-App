@@ -162,8 +162,4 @@ If you're a student, mentor, or just someone curious — thank you for checking 
 > *“Your mind is a garden. Your thoughts are the seeds. You can grow flowers or you can grow weeds.” 🌱*
 
 ```
-
-> ✅ Once you upload real screenshots to the `/screenshots/` folder and adjust the APK download link, your submission will look very professional.
-
-Would you like me to help generate sample screenshots using mock UI as placeholders too?
 ```
