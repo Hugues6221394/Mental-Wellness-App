@@ -1,165 +1,121 @@
+# � Mind Mate – Mental Wellness Companion App  
+**A Flutter-Based Offline Solution for Student Well-Being**  
 
-# 🧠 Mind Mate – Mental Wellness Companion App
-
-Mind Mate is a **Flutter-based mental wellness mobile app** tailored for university students.  
-It allows users to track moods, journal emotions, access meditation guides, connect anonymously with peers, and contact emergency help — **all offline** using local storage via **Hive**.
-
----
-
-## ✨ Features
-
-### 🌈 Mood Tracker
-- Add, edit, or delete moods using swipe gestures
-- View mood history in a scrollable card list
-- Long-press or swipe right to edit, left to delete
-
-### 📔 Journal
-- Write and save private journal entries
-- View and manage past reflections
-- Local-only, secure, and fast
-
-### 💬 Peer Chat (Anonymous)
-- Chat anonymously with others in a peer-support format
-- (Currently simulates interaction — can be extended to real-time Firebase or AI)
-
-### 🧘 Meditation Timer
-- Timer for guided breathing or meditation sessions
-- Includes calming animations (Lottie/GIF)
-
-### 📞 Emergency Contacts
-- One-tap call to school helpline or mental support
-- All numbers are hardcoded for offline use
-
-### 🗃️ Offline-First Architecture
-- All data (moods, journals) stored using Hive
-- Lightweight and efficient, works without internet
+Mind Mate is a **secure, offline-first mobile application** designed to support the mental wellness of university students. Built with Flutter and powered by **Hive** for local storage, it offers mood tracking, journaling, peer support, meditation tools, and emergency contacts—all without requiring an internet connection.  
 
 ---
 
-## 📁 Project Structure
+## ✨ Key Features  
 
+### **Core Functionalities**  
+| Feature                | Description                                                                 | Tech Used          |  
+|------------------------|-----------------------------------------------------------------------------|--------------------|  
+| **🌱 Mood Tracker**    | Log, edit (swipe-right), or delete (swipe-left) daily moods with animations | `Hive` + `Dismissible` |  
+| **📖 Secure Journal**  | Encrypted local journal entries with CRUD operations                        | `Hive` + `AES`     |  
+| **💬 Peer Chat**       | Anonymous support chat (simulated; extendable to Firebase/AI)               | `Mock Service`     |  
+| **🧘 Guided Meditation** | Timer with calming Lottie animations for breathing exercises               | `Lottie`           |  
+| **🆘 Emergency Links** | One-tap access to university counseling/emergency contacts (hardcoded)      | `url_launcher`     |  
+
+### **Technical Highlights**  
+✅ **Offline-First Architecture**: All user data persists locally via Hive (NoSQL)  
+✅ **Clean Architecture**: Separation of concerns (Domain/Data/Presentation)  
+✅ **Responsive UI**: Dark/light theme support with adaptive widgets  
+✅ **Interactive UX**: Swipe gestures, animated dialogs, and feedback  
+
+---
+
+## 🏗️ Project Structure (Modular Design)  
+```bash
+lib/
+├── core/               # App-wide utilities
+│   ├── theme/          # Material3 theming
+│   └── constants/      # Routes, strings, etc.
+├── data/               # Data layer
+│   ├── models/         # Hive adapters
+│   └── repositories/   # Local data sources
+├── domain/             # Business logic
+│   ├── entities/       # Pure Dart classes
+│   └── use_cases/      # Feature-specific logic
+└── presentation/       # UI layer
+    ├── pages/          # Feature screens
+    ├── widgets/        # Reusable components
+    └── providers/      # State management
 ```
 
-lib/
-├── main.dart
-├── app.dart
-├── core/
-│   ├── theme/
-│   └── utils/
-├── data/
-│   ├── models/
-│   ├── local/
-│   └── repositories/
-├── domain/
-│   ├── entities/
-│   └── repositories/
-├── presentation/
-│   ├── pages/
-│   ├── widgets/
-│   └── providers/
-
-````
-
 ---
 
-## 🚀 Getting Started
+## ⚙️ Installation & Setup  
 
-### 📦 Requirements
-- Flutter 3.3.0+
-- Dart SDK
-- Android Studio or VS Code
-- Emulator/device setup
+### **Prerequisites**  
+- Flutter 3.3.0+  
+- Dart 2.18+  
+- Android Studio/VSCode with Flutter plugin  
 
-### ⚙️ Setup Instructions
-
+### **Run Locally**  
 ```bash
 git clone https://github.com/YourUsername/mind_mate.git
 cd mind_mate
 flutter pub get
-flutter packages pub run build_runner build --delete-conflicting-outputs
-flutter run
-````
+flutter pub run build_runner build --delete-conflicting-outputs  # Generate Hive adapters
+flutter run -d chrome  # For web testing (or use device/emulator)
+```
 
 ---
 
-## 🖼️ Screenshots
+## 📸 Application Screenshots  
 
-> Replace these with real screenshots stored under `/screenshots/`
+| **Home Screen** | **Mood Tracker** | **Journal** |  
+|-----------------|------------------|-------------|  
+| ![Home](screenshots/home.png) | ![Mood](screenshots/mood.png) | ![Journal](screenshots/journal.png) |  
 
-| Home Screen                   | Mood Tracker                  | Journal                             |
-| ----------------------------- | ----------------------------- | ----------------------------------- |
-| ![Home](screenshots/home.png) | ![Mood](screenshots/mood.png) | ![Journal](screenshots/journal.png) |
+| **Peer Chat** | **Meditation** | **Emergency** |  
+|--------------|----------------|---------------|  
+| ![Chat](screenshots/chat.png) | ![Meditation](screenshots/meditation.png) | ![Emergency](screenshots/emergency.png) |  
 
-| Peer Chat                     | Meditation                                | Emergency                               |
-| ----------------------------- | ----------------------------------------- | --------------------------------------- |
-| ![Chat](screenshots/chat.png) | ![Meditation](screenshots/meditation.png) | ![Emergency](screenshots/emergency.png) |
+*(Replace placeholders with actual screenshots in `/screenshots/`)*  
 
 ---
 
-## 📦 APK Build
-
-> You can share this build for demo or evaluation purposes.
-
+## 📦 Deployment  
+### **Debug APK**  
 ```bash
-android/app/build/outputs/flutter-apk/app-debug.apk
-```
-
-📎 [Download APK](https://github.com/YourUsername/mind_mate/releases)
-
----
-
-## ✅ Best Practices Followed
-
-* ✅ Modular architecture (domain/data/presentation)
-* ✅ Offline storage (Hive)
-* ✅ Swipe to edit/delete (AnimatedList + Dismissible)
-* ✅ Theming & dark mode
-* ✅ Easy-to-maintain codebase
-* ✅ Developer documentation (README)
+flutter build apk --debug  # Output: build/app/outputs/flutter-apk/app-debug.apk
+```  
+🔗 **[Download APK](https://github.com/YourUsername/mind_mate/releases)**  
 
 ---
 
-## 🎯 Bonus Implementations
-
-| Bonus Feature               | Status |
-| --------------------------- | ------ |
-| Swipe to Edit/Delete        | ✅ Done |
-| Animated Dialogs & Feedback | ✅ Done |
-| Hive HiveAdapter Setup      | ✅ Done |
-| Dark Theme                  | ✅ Done |
-| Chat Simulator              | ✅ Done |
-| Meditation Timer with GIFs  | ✅ Done |
-| Offline Functionality       | ✅ Done |
+## ✅ Best Practices Implemented  
+| Category               | Implementation Details                          |  
+|------------------------|------------------------------------------------|  
+| **Architecture**       | Clean Architecture + Repository Pattern        |  
+| **State Management**   | Provider for scalable state                    |  
+| **Performance**        | Hive for low-latency local storage             |  
+| **Security**           | Journal encryption (AES)                       |  
+| **Maintainability**    | Documented code + modular structure            |  
 
 ---
 
-## 👨‍🎓 Student Information
-
-* **Name**: NGABONZIZA Hugues
-* **Student ID**: 26148
-* **University**: Adventist University of Central Africa (AUCA)
-* **Course**: Mobile Programming
-* **Instructor**: *\[Insert Instructor's Name]*
-* **Submission Date**: July 19, 2025
-
----
-
-## 📜 License
-
-This project is licensed under the MIT License.
-Feel free to fork and customize for personal or educational use.
+## 📜 Academic Submission Details  
+- **Student**: NGABONZIZA Hugues  
+- **ID**: 26148  
+- **Institution**: Adventist University of Central Africa (AUCA)  
+- **Course**: Mobile Programming  
+- **Instructor**: [Instructor Name]  
+- **Submission Date**: July 19, 2025  
 
 ---
 
-## 🙏 Final Notes
+## 🔐 License  
+MIT License. Open-source for educational use.  
 
-This project was developed with a focus on **clean architecture**, **usability**, and **offline support**, reflecting real-world mobile app standards. Every line of code has a purpose, and every feature is made to enhance mental wellness.
+---  
 
-If you're a student, mentor, or just someone curious — thank you for checking out **Mind Mate**!
+## 🎯 Why This Project Stands Out  
+1. **Real-World Relevance**: Addresses student mental health with offline accessibility.  
+2. **Technical Rigor**: Adheres to industry standards (clean architecture, SOLID principles).  
+3. **User-Centric Design**: Intuitive gestures, animations, and privacy-focused features.  
 
----
+> *"Mental health is not a destination, but a process. It’s about how you drive, not where you’re going."* — Noam Shpancer  
 
-> *“Your mind is a garden. Your thoughts are the seeds. You can grow flowers or you can grow weeds.” 🌱*
-
-```
-```
+---  
