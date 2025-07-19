@@ -27,62 +27,59 @@ class _JournalPageState extends State<JournalPage> with TickerProviderStateMixin
   }
 
   void _addEntryDialog() {
-    showGeneralDialog(
+    showDialog(
       context: context,
       barrierDismissible: true,
-      transitionBuilder: (context, anim1, anim2, child) {
-        return FadeTransition(
-          opacity: anim1,
-          child: Transform.scale(
-            scale: anim1.value,
-            child: child,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          title: const Text('📝 New Journal Entry'),
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                TextField(
+                  controller: _titleController,
+                  decoration: const InputDecoration(
+                    labelText: 'Title',
+                    prefixIcon: Icon(Icons.title),
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                TextField(
+                  controller: _contentController,
+                  maxLines: 5,
+                  decoration: const InputDecoration(
+                    labelText: 'Content',
+                    prefixIcon: Icon(Icons.notes),
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+              ],
+            ),
           ),
+          actions: [
+            TextButton.icon(
+              onPressed: () {
+                _titleController.clear();
+                _contentController.clear();
+                Navigator.pop(context);
+              },
+              icon: const Icon(Icons.cancel, color: Colors.redAccent),
+              label: const Text('Cancel'),
+            ),
+            ElevatedButton.icon(
+              onPressed: _saveJournal,
+              icon: const Icon(Icons.save),
+              label: const Text('Save'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.deepPurple,
+              ),
+            ),
+          ],
         );
       },
-      transitionDuration: const Duration(milliseconds: 300),
-      pageBuilder: (context, animation, secondaryAnimation) => AlertDialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        title: const Text('📝 New Journal Entry'),
-        content: SingleChildScrollView(
-          child: Column(
-            children: [
-              TextField(
-                controller: _titleController,
-                decoration: const InputDecoration(
-                  labelText: 'Title',
-                  prefixIcon: Icon(Icons.title),
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              const SizedBox(height: 10),
-              TextField(
-                controller: _contentController,
-                maxLines: 5,
-                decoration: const InputDecoration(
-                  labelText: 'Content',
-                  prefixIcon: Icon(Icons.notes),
-                  border: OutlineInputBorder(),
-                ),
-              ),
-            ],
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () {
-              _titleController.clear();
-              _contentController.clear();
-              Navigator.pop(context);
-            },
-            child: const Text('Cancel'),
-          ),
-          ElevatedButton.icon(
-            onPressed: _saveJournal,
-            icon: const Icon(Icons.save),
-            label: const Text('Save'),
-          ),
-        ],
-      ),
     );
   }
 
@@ -124,7 +121,8 @@ class _JournalPageState extends State<JournalPage> with TickerProviderStateMixin
     return SizeTransition(
       sizeFactor: animation,
       child: Card(
-        elevation: 3,
+        elevation: 4,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         margin: const EdgeInsets.symmetric(vertical: 8),
         child: ListTile(
           leading: const Icon(Icons.bookmark, color: Colors.deepPurple),
@@ -148,6 +146,7 @@ class _JournalPageState extends State<JournalPage> with TickerProviderStateMixin
       appBar: AppBar(
         title: const Text('📖 Journal'),
         backgroundColor: Colors.deepPurple,
+        elevation: 3,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _addEntryDialog,
@@ -159,7 +158,10 @@ class _JournalPageState extends State<JournalPage> with TickerProviderStateMixin
         builder: (_, box, __) {
           if (box.isEmpty) {
             return const Center(
-              child: Text('No journal entries yet. Start writing! 📝'),
+              child: Text(
+                'No journal entries yet. Start writing! 📝',
+                style: TextStyle(color: Colors.black54),
+              ),
             );
           }
 

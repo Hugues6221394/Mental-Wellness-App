@@ -24,6 +24,7 @@ dependencies:
   fluttertoast: ^8.2.2
 
 flutter:
+  uses-material-design: true
   assets:
     - assets/meditation.gif
 
