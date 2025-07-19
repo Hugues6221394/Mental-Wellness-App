@@ -80,8 +80,11 @@ flutter run -d chrome  # For web testing (or use device/emulator)
 ### **Debug APK**  
 ```bash
 flutter build apk --debug  # Output: build/app/outputs/flutter-apk/app-debug.apk
-```  
-🔗 **[Download APK](https://github.com/hugues6221394/Mental-Wellness-App/releases)**  
+```
+## 📲 Download Mind Mate
+
+🔗 **[![Download APK](https://img.shields.io/badge/Download-APK-green?style=for-the-badge&logo=android)](https://github.com/Hugues6221394/Mental-Wellness-App/releases/download/v1.0.0/MindMate_v1.0.0.apk)**
+
 
 ---
 
